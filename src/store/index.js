@@ -9,6 +9,6 @@ export default configureStore({
         products,
         cart,
         modal,
-        user
+        user,
     }
 })

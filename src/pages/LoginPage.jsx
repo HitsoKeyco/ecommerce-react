@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import useAuth from '../hooks/useAuth'
 import '../pages/styles/LoginPage.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { stateModalThunk } from '../store/slices/stateModal.slice'
+import { stateUserThunk } from '../store/slices/userSlice'
 
-const LoginPage = ({ setOpenLogin }) => {
+const LoginPage = ({ setOpenLogin, setLogingRenderNav }) => {
+    const dispatch = useDispatch()
+    const userLoginState = useSelector( state => state.user)
 
     const userData = JSON.parse(localStorage.getItem('user'));
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm()    
-    const { loginUser, createUser, hasError } = useAuth()
+    const { loginUser, createUser, hasError, success } = useAuth()
 
     // Control de renderizado 
     const [isLogin, setIsLogin] = useState();
@@ -16,13 +21,18 @@ const LoginPage = ({ setOpenLogin }) => {
     useEffect(() => {
         if (localStorage.getItem('token')) {
             setIsLogin(true);
+            
         }
     }, []);
 
     useEffect(() => {
-        
-    }, [])
+        if(success){
+            setOpenLogin(false)
+            setLogingRenderNav(true)
+        }
+    }, [success])
 
+    
 
     // Controlador de mensaje de error
     const [showError, setShowError] = useState();
@@ -45,7 +55,6 @@ const LoginPage = ({ setOpenLogin }) => {
                 password: ''
             }
         )
-        setOpenLogin(false)
     }
 
 
@@ -53,6 +62,11 @@ const LoginPage = ({ setOpenLogin }) => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         setOpenLogin(false)
+        setLogingRenderNav(false)
+        dispatch(stateUserThunk(false))
+        
+
+        
     }
 
     const registerLink = () => {

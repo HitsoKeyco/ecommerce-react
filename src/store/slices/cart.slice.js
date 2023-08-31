@@ -26,7 +26,7 @@ export const  getCartThunk = () => (dispatch) => {
     const url = baseUrl
     axios.get(url, getConfigAuth())
         .then(res => dispatch(setCarG(res.data)))
-        .catch(err => console.log(err))
+        .catch(err => err)
 }
 
 export const postCartThunk = (prod, quantity = 1) => (dispatch) => {
@@ -51,9 +51,9 @@ export const deleteteProductThunk = ( id ) => (dispatch) => {
     const url = `${baseUrl}/${id}`
         axios.delete(url, getConfigAuth())
             .then(res => {
-                console.log(res.data)
+                
                 dispatch(deleteProductCartG(id))
             })
-            .catch(err => console.log(err))
+            .catch(err => err)
 }
 

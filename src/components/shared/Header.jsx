@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import '../shared/style/Header.css';
 import LoginPage from '../../pages/LoginPage';
 import RegisterPage from '../../pages/RegisterPage';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+
+    //control de renderizacion Loging
+    const [ logingRenderNav, setLogingRenderNav ] = useState(false)    
+    const stateLogin = useSelector(state => state.user)
+    console.log(stateLogin);
+
+    
 
     // Control de Link Login Nav
     const [openLogin, setOpenLogin] = useState(false);
@@ -16,11 +24,13 @@ const Header = () => {
 
     //----------- Login--------------------
     const [isLogin, setIsLogin] = useState(false);
+    
     useEffect(() => {
         if (localStorage.getItem('token')) {
-            setIsLogin(true);
+            setIsLogin(!isLogin);         
         }
-    }, []);
+
+    }, [logingRenderNav]);
 
 
     //-----------------MAnejo de Menu en dispositivos pequeños -----------------
@@ -37,7 +47,11 @@ const Header = () => {
         setOpenLogin(false)
         setOpenModalRegister(!openModalRegister)
         setIsNavOpen(false)
+
     }
+
+
+
 
     return (
         <>
@@ -53,7 +67,7 @@ const Header = () => {
                                 Products
                             </Link>
                         </li>
-                        {isLogin ? (
+                        {stateLogin ? (
                             <>
                                 <li className='header_nav_li'>
                                     <Link onClick={handleMenu} to='/purchases' className='nav_text'>
@@ -62,7 +76,7 @@ const Header = () => {
                                 </li>
                                 <li className='header_nav_li'>
                                     <Link onClick={handleMenu} to='/cart' className='nav_text'>
-                                        <i className='bx bx-cart-alt'></i>
+                                        <i className='bx bx-cart-alt bx-cart-alt-menu'></i>
                                     </Link>
                                 </li>
                             </>
@@ -71,10 +85,8 @@ const Header = () => {
                                 <li className='header_nav_li'>
                                     <span onClick={handdleRegisterLink} className='nav_text' href="">Register</span>
                                 </li>
-
                             </>
                         )}
-
                         <li className='header_nav_li'>
                             <Link onClick={handdleModalLogin} className='nav_text'>
                                 <i className='bx bx-user-circle'></i>
@@ -83,14 +95,18 @@ const Header = () => {
                         </li>
                     </ul>
                 </nav>
-                <i onClick={handleMenu} className='bx bx-menu'></i>
+                <div className="element_nav_screen_small">
+                    { 
+                        stateLogin && <i className='bx bx-cart-alt cart_nav'></i>
+                    }
+                    <i onClick={handleMenu} className='bx bx-menu'></i>
+                </div>
             </header>
             {
                 openLogin ?
-                    <LoginPage setOpenLogin={setOpenLogin} setIsNavOpen={setIsNavOpen} />
+                    <LoginPage setOpenLogin={setOpenLogin} setIsNavOpen={setIsNavOpen} setLogingRenderNav={setLogingRenderNav}/>
                     : ''
             }
-
             {
                 openModalRegister ?
                     <RegisterPage setOpenModalRegister={setOpenModalRegister} />
