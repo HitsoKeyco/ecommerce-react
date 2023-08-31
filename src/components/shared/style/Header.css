@@ -1,0 +1,133 @@
+.header{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 5px;
+    background-color: rgb(247, 78, 78);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    margin-bottom: 20px;
+}
+.header_nav{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: rgb(228, 84, 84);
+
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 0 50%;   
+    transition: 0.3s ease-in-out;
+}
+
+.header_nav_ul{    
+    gap: 25px;   
+}
+
+.header_nav_li{
+    padding-top: 15px;
+    font-size: 1.4em;
+}
+
+.nav_text{
+    color: white;
+    cursor: pointer;
+}
+
+.nav_text_logo {
+    font-size: 1em;
+    padding-left: 25px;
+    font-weight: 600;
+    color: white;
+}
+
+.bx-menu{
+    font-size: 1.8em;    
+    margin-right: 0;
+    color: white;
+    cursor: pointer;
+}
+
+.bx-x{
+    color: white;
+    font-size: 1.5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    cursor: pointer;
+}
+
+c{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+
+}
+
+.header_nav_show{
+    right: 0;
+    border-radius: 0 0 0 0;
+    height: 100%;   
+}
+
+.bx-user-circle{
+    font-size: 1.3em;
+    cursor: pointer;
+    display: none;
+}
+
+
+@media (min-width: 700px) {
+
+    .bx-menu{
+        display: none;
+    }
+
+    .login_menu_text{
+        display: none;
+    }
+    
+    .bx-user-circle{
+        display: inherit;
+    }
+
+    .header_nav{        
+        position: inherit;
+        height: 60px;
+        width: max-content;
+    }
+    .bx-x{
+        display: none;
+    }
+
+    .bx-cart-alt{
+        display: in;
+    }
+
+    .header_nav_ul{
+        display: flex;
+        align-items: center;
+        padding-right: 25px;
+        
+    }
+    .header_nav_li{
+        padding-top: 0;
+        font-size: 17px;
+        
+    }
+    .nav_text_logo {
+        padding-left: 25px;
+        font-size: 1.3em;
+    }
+}

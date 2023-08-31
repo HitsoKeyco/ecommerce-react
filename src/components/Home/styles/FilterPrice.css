@@ -1,0 +1,53 @@
+
+.filter_input{
+    width: 100%;
+}
+
+.form_filter{
+    display: flex;
+    gap: 25px;
+    padding: 0;
+    padding-left: 25px;
+}
+
+.btn_filter{
+    padding: 10px 20px;
+    background-color: rgb(247, 78, 78);;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 20px 0;
+}
+
+.btn_filter:hover{
+    background-color: rgb(241, 145, 145);
+}
+.filter_price_text{
+    color: rgb(235, 15, 15);
+    padding-left: 25px;
+    padding-bottom: 10px;
+}
+
+.close_filter{    
+    cursor: pointer;
+    font-size: 25px;
+    color:  rgb(253, 246, 243);
+}
+
+.container_notification_filter_price{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin-left: 25px;
+    padding-left: 15px;
+    border-radius: 8px;
+
+    background-color: rgb(210, 102, 243);
+    color: rgb(240, 239, 239);
+}
+.bx-checkbox-minus{
+    padding: 5px;
+}

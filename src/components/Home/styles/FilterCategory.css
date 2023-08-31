@@ -1,0 +1,16 @@
+.filter_tilte_category{
+    padding-bottom: 5px;
+    color: rgb(235, 15, 15);
+}
+.filter_li_option{
+    padding-left: 10px;
+    cursor: pointer;
+
+}
+.filter_li_option:hover{
+    color: rgb(235, 15, 15);
+    padding-left: 15px;
+}
+.container_filter_category{
+    padding: 25px;
+}

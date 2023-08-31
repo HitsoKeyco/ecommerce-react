@@ -1,0 +1,27 @@
+.body_container_products{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    
+    
+}
+.container_products{        
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+
+.home_input_container_search{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    
+}
+
+.input_home_search{    
+    
+    margin-right: 30px;
+}
